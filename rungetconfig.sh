@@ -1,13 +1,12 @@
 #!/bin/bash
 
-DODFINDER=0
+DODFINDER=1
 
 #
 HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V6"
 GLOBTAG="92X_upgrade2017_TSG_For90XSamples_V2"
-SAMPLE="root://cms-xrd-global.cern.ch//store/mc/PhaseIFall16DR/MinBias_TuneCUETP8M1_13TeV-pythia8/GEN-SIM-RAW/NoPUNZS_90X_upgrade2017_realistic_v6_C1_ext1-v1/120000/02C12851-7708-E711-8347-02163E01A579.root"
-# SAMPLE="root://cms-xrd-global.cern.ch//store/mc/PhaseIFall16DR/MinBias_TuneCUETP8M1_13TeV-pythia8/AODSIM/NoPUNZS_90X_upgrade2017_realistic_v6_C1_ext1-v1/120000/0AEFBB63-6C0A-E711-8737-02163E01A74F.root"
-# SAMPLE="root://cms-xrd-global.cern.ch//store/user/gsfs/Hydjet_Quenched_MinBias_Cymbal5Ev8_XeXe_9_2/RAWDEBUG_20171001/171001_193736/0000/step2_MinBias_XeXe_DIGI_L1_DIGI2RAW_HLT_PU_101.root"
+# SAMPLE="root://cms-xrd-global.cern.ch//store/mc/PhaseIFall16DR/MinBias_TuneCUETP8M1_13TeV-pythia8/GEN-SIM-RAW/NoPUNZS_90X_upgrade2017_realistic_v6_C1_ext1-v1/120000/02C12851-7708-E711-8347-02163E01A579.root"
+SAMPLE="root://cms-xrd-global.cern.ch//store/mc/PhaseIFall16DR/MinBias_TuneCUETP8M1_13TeV-pythia8/AODSIM/NoPUNZS_90X_upgrade2017_realistic_v6_C1_ext1-v1/120000/0AEFBB63-6C0A-E711-8737-02163E01A74F.root"
 OUTPUTCONFIG="hlt92X.py"
 NEVENT=100
 
