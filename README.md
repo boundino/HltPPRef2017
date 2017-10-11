@@ -107,7 +107,7 @@ process.options = cms.untracked.PSet(
     sizeOfStackForThreadsInKB = cms.untracked.uint32( 10*1024 )
 )
 </pre>
-to
+in <code>hlt92X.py</code> to
 <pre>
 process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool( True ),
