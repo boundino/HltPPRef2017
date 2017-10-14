@@ -3,12 +3,13 @@
 DODFINDER=1
 
 #
-HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V6"
+HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V8"
 GLOBTAG="92X_upgrade2017_TSG_For90XSamples_V2"
 SAMPLE="root://cms-xrd-global.cern.ch//store/mc/PhaseIFall16DR/MinBias_TuneCUETP8M1_13TeV-pythia8/AODSIM/NoPUNZS_90X_upgrade2017_realistic_v6_C1_ext1-v1/120000/0AEFBB63-6C0A-E711-8737-02163E01A74F.root" 
 # Parents: /data/wangj/HLT2017/Parents_MinBias_TuneCUETP8M1_13TeV_pythia8_0AEFBB63_6C0A_E711_8737_02163E01A74F/*
+L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMOD.xml"
 OUTPUTCONFIG="hlt92X.py"
-NEVENT=100
+NEVENT=1000
 
 ##
 
@@ -17,7 +18,7 @@ hltGetConfiguration $HLTCONFIG \
     --globaltag $GLOBTAG \
     --input $SAMPLE \
     --mc --process MYHLT --full --offline \
-    --l1-emulator FullMC --l1 L1Menu_Collisions2017_v3_m6_xml \
+    --l1-emulator FullMC --l1Xml=$L1MENU \
     --unprescale --max-events $NEVENT --output none > $OUTPUTCONFIG
 
 echo '
