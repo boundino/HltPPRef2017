@@ -5,8 +5,8 @@ DODFINDER=1
 #
 HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V8"
 GLOBTAG="92X_upgrade2017_TSG_For90XSamples_V2"
-SAMPLE="root://cms-xrd-global.cern.ch//store/mc/PhaseIFall16DR/MinBias_TuneCUETP8M1_13TeV-pythia8/AODSIM/NoPUNZS_90X_upgrade2017_realistic_v6_C1_ext1-v1/120000/0AEFBB63-6C0A-E711-8737-02163E01A74F.root" 
-# Parents: /data/wangj/HLT2017/Parents_MinBias_TuneCUETP8M1_13TeV_pythia8_0AEFBB63_6C0A_E711_8737_02163E01A74F/*
+SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_063810/0000/step3_pp_RAW2DIGI_L1Reco_RECO_106.root"
+
 L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMOD.xml"
 OUTPUTCONFIG="hlt92X.py"
 NEVENT=1000
