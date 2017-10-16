@@ -11,7 +11,7 @@ SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_P
 
 L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMOD.xml"
 OUTPUTCONFIG="hlt92X.py"
-NEVENT=1000
+NEVENT=100
 
 ##
 
@@ -71,6 +71,7 @@ process.Dfinder.svpvDistanceCut_lowptD = cms.vdouble(2.5, 2.5, 2.5, 2.5, 2.5, 2.
 process.Dfinder.svpvDistanceCut_highptD = cms.vdouble(0., 0., 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0.)
 process.Dfinder.Dchannel = cms.vint32(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 process.Dfinder.readDedx = cms.bool(False)
+process.Dfinder.MVAMapLabel = cms.InputTag(TrkLabel,"MVAValues")
 process.p = cms.Path(process.DfinderSequence)
 ' >> $OUTPUTCONFIG
 fi
