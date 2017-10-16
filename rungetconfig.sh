@@ -1,11 +1,13 @@
 #!/bin/bash
 
 DODFINDER=1
+DOEVTANALYZER=0
 
 #
-HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V8"
+HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V10"
 GLOBTAG="92X_upgrade2017_TSG_For90XSamples_V2"
 SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_063810/0000/step3_pp_RAW2DIGI_L1Reco_RECO_106.root"
+# SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root"
 
 L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMOD.xml"
 OUTPUTCONFIG="hlt92X.py"
@@ -34,6 +36,19 @@ process.hltBitAnalysis = cms.EndPath(process.hltbitanalysis)
 process.TFileService = cms.Service("TFileService",
                                    fileName=cms.string("openHLT.root"))' >> $OUTPUTCONFIG
 
+if [[ $DOEVTANALYZER -eq 1 ]]
+then
+    echo '
+process.load('"'"'HeavyIonsAnalysis.EventAnalysis.hltanalysis_cff'"'"')
+process.load('"'"'HeavyIonsAnalysis.EventAnalysis.hievtanalyzer_data_cfi'"'"') #use data version to avoid PbPb MC
+process.hiEvtAnalyzer.Vertex = cms.InputTag("offlinePrimaryVertices")
+process.hiEvtAnalyzer.doCentrality = cms.bool(False)
+process.hiEvtAnalyzer.doEvtPlane = cms.bool(False)
+process.hiEvtAnalyzer.doMC = cms.bool(True) #general MC info
+process.hiEvtAnalyzer.doHiMC = cms.bool(False) #HI specific MC info
+process.ana_step = cms.Path(process.hiEvtAnalyzer)' >> $OUTPUTCONFIG
+fi
+
 if [[ $DODFINDER -eq 1 ]]
 then
     echo '
@@ -49,11 +64,11 @@ finderMaker_75X(process, AddCaloMuon, runOnMC, HIFormat, UseGenPlusSim, VtxLabel
 # finderMaker_75X(process, AddCaloMuon, runOnMC, HIFormat, UseGenPlusSim)
 process.Dfinder.tkPtCut = cms.double(1.0) #before fit
 process.Dfinder.dPtCut = cms.vdouble(4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0) #before fit
-process.Dfinder.dCutSeparating_PtVal = cms.vdouble(8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8.)
+process.Dfinder.dCutSeparating_PtVal = cms.vdouble(4., 4., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8.)
 process.Dfinder.tktkRes_svpvDistanceCut_lowptD = cms.vdouble(0., 0., 0., 0., 0., 0., 0., 0., 3.0, 3.0, 3.0, 3.0, 3.0, 3.0)
 process.Dfinder.tktkRes_svpvDistanceCut_highptD = cms.vdouble(0., 0., 0., 0., 0., 0., 0., 0., 1.5, 1.5, 1.5, 1.5, 1.5, 1.5)
 process.Dfinder.svpvDistanceCut_lowptD = cms.vdouble(2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0.)
-process.Dfinder.svpvDistanceCut_highptD = cms.vdouble(2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0.)
+process.Dfinder.svpvDistanceCut_highptD = cms.vdouble(0., 0., 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0.)
 process.Dfinder.Dchannel = cms.vint32(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 process.Dfinder.readDedx = cms.bool(False)
 process.p = cms.Path(process.DfinderSequence)
