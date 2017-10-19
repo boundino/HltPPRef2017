@@ -4,14 +4,19 @@ DODFINDER=1
 DOEVTANALYZER=0
 
 #
-HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V10"
-GLOBTAG="92X_upgrade2017_TSG_For90XSamples_V2"
-SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_063810/0000/step3_pp_RAW2DIGI_L1Reco_RECO_106.root"
-# SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root"
+HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V13"
+GLOBTAG="92X_upgrade2017_realistic_v11"
+# GLOBTAG="92X_upgrade2017_TSG_For90XSamples_V2" # outdated
+SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_063810/0000/step3_pp_RAW2DIGI_L1Reco_RECO_106.root" # prompt D RECO
+# SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root" # prompt D RAW
+# SAMPLE="root://cms-xrd-global.cern.ch//store/user/gsfs/Pythia8_MinBias_pp_CUETP8M1_5020GeV/RECO__201711004/171004_122654/0000/step3_pp_RAW2DIGI_L1Reco_RECO_103.root" # MB RECO
+# SAMPLE="root://cms-xrd-global.cern.ch//store/user/gsfs/Pythia8_MinBias_pp_CUETP8M1_5020GeV/RAW_20171002/171003_010838/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_104.root" # MB RAW
 
-L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMOD.xml"
+
+# L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMOD.xml"
+L1MENU="L1Menu_Collisions2017_dev_r9_HIppRefMODv2_20171018.xml"
 OUTPUTCONFIG="hlt92X.py"
-NEVENT=100
+NEVENT=1000
 
 ##
 
