@@ -69,6 +69,7 @@ Note: <code>hltGetConfiguration</code> doesn't work on svmithi02, which is not a
 </ol>
 
 <h2> Test HLT emulators and Dfinder locally </h2>
+<p style="color:blue;">*Update (2017.10.20): Done by <a href="https://github.com/boundino/HltPPRef2017/blob/master/rungetconfig.sh#L106-L110">rungetconfig.sh</a></p>
 Ref: <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePoolInputSources#Example_5_Merging_files_with_dif">https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePoolInputSources#Example_5_Merging_files_with_dif</a>
 <p> Add </p>
 <pre>
@@ -84,6 +85,7 @@ in <code>hlt92X.py</code> after
 </pre>
 
 <h2> Use CRAB </h2>
+<p style="color:blue;">*Update (2017.10.20): Done by <a href="https://github.com/boundino/HltPPRef2017/blob/master/rungetconfig.sh#L102-L104">rungetconfig.sh</a></p>
 <code>crabConfigPrivatePP.py</code> is a template of crab submission config. If using <code>config.Data.useParent = True</code>, maybe you need to change
 <pre>
   process.options = cms.untracked.PSet(
