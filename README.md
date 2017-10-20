@@ -31,7 +31,7 @@ Ref: <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideGlobalHLT#Ru
 <h2> Add HighpT SingleJet L1 menu XML (update on 2017.10.18) </h2>
 Ref: <a href="https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiHighPtTrigger2017#L1_Menu">https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiHighPtTrigger2017#L1_Menu</a>
 
-Download the L1 menu <code>L1Menu_Collisions2017_dev_r9_HIppRefMODv2_20171018.xml</code> from <a href="https://twiki.cern.ch/twiki/pub/CMS/HiHighPtTrigger2017">HiHighPtTrigger2017 twiki</a> attachments, and put it in <code>L1Trigger/L1TGlobal/data/Luminosity/startup/</code>.
+Download the L1 menu <code>L1Menu_Collisions2017_dev_r9_HIppRefMODv2_20171018.xml</code> from <a href="https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiHighPtTrigger2017">HiHighPtTrigger2017 twiki</a> attachments, and put it in <code>L1Trigger/L1TGlobal/data/Luminosity/startup/</code>.
 
 <h2> Set up Dfinder </h2>
 Ref: <a href="https://github.com/taweiXcms/Bfinder/tree/Dfinder_9XX">https://github.com/taweiXcms/Bfinder/tree/Dfinder_9XX</a>
