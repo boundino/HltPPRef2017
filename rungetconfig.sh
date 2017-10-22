@@ -6,7 +6,6 @@
 # SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_Dspt0p0_Pthat50_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_160206/0000/step3_pp_RAW2DIGI_L1Reco_RECO_104.root" # Ds RECO
 # SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_Dspt0p0_Pthat50_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201622/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_118.root" # Ds RAW
 
-isDs=0 # 1: Ds, 0: D0
 DODFINDER=1
 DOEVTANALYZER=0
 
@@ -32,7 +31,8 @@ hltGetConfiguration $HLTCONFIG \
     --globaltag $GLOBTAG \
     --input $SAMPLE \
     --mc --process MYHLT --full --offline \
-    --l1-emulator FullMC --l1Xml=$L1MENU \
+    --l1-emulator FullMC \
+    --l1Xml=$L1MENU \
     --unprescale --max-events $NEVENT --output none > $OUTPUTCONFIG
 
 # HLT bit analyzer
@@ -79,32 +79,24 @@ finderMaker_75X(process, AddCaloMuon, runOnMC, HIFormat, UseGenPlusSim, VtxLabel
 # finderMaker_75X(process, AddCaloMuon, runOnMC, HIFormat, UseGenPlusSim)
 process.Dfinder.tkPtCut = cms.double(1.0) #before fit
 process.Dfinder.dPtCut = cms.vdouble(4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0) #before fit
-process.Dfinder.dCutSeparating_PtVal = cms.vdouble(4., 4., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8., 8.)
+process.Dfinder.dCutSeparating_PtVal = cms.vdouble(4., 4., 8., 8., 8., 8., 4., 4., 8., 8., 8., 8., 8., 8.)
 process.Dfinder.tktkRes_svpvDistanceCut_lowptD = cms.vdouble(0., 0., 0., 0., 0., 0., 0., 0., 3.0, 3.0, 3.0, 3.0, 3.0, 3.0)
 process.Dfinder.tktkRes_svpvDistanceCut_highptD = cms.vdouble(0., 0., 0., 0., 0., 0., 0., 0., 1.5, 1.5, 1.5, 1.5, 1.5, 1.5)
 process.Dfinder.svpvDistanceCut_lowptD = cms.vdouble(2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0.)
-process.Dfinder.svpvDistanceCut_highptD = cms.vdouble(0., 0., 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0.)
+process.Dfinder.svpvDistanceCut_highptD = cms.vdouble(0., 0., 2.5, 2.5, 2.5, 2.5, 0., 0., 0., 0., 0., 0., 0., 0.)
+process.Dfinder.Dchannel = cms.vint32(1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0)
 process.Dfinder.readDedx = cms.bool(False)
-process.Dfinder.MVAMapLabel = cms.InputTag(TrkLabel,"MVAValues")' >> $OUTPUTCONFIG
-
-    if [[ $isDs -eq 0 ]]
-    then
-        echo 'process.Dfinder.Dchannel = cms.vint32(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)' >> $OUTPUTCONFIG
-    fi
-    if [[ $isDs -eq 1 ]]
-    then
-        echo 'process.Dfinder.Dchannel = cms.vint32(0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0)' >> $OUTPUTCONFIG
-    fi
-    echo 'process.p = cms.Path(process.DfinderSequence)
+process.Dfinder.MVAMapLabel = cms.InputTag(TrkLabel,"MVAValues")
+process.p = cms.Path(process.DfinderSequence)
 ' >> $OUTPUTCONFIG
 fi
 
 # Set number of threads to 1
-sed -i 's/numberOfThreads = cms.untracked\.uint32( 4 )/numberOfThreads = cms.untracked.uint32( 1 )/g' hlt92X.py
-sed -i 's/process\.DQMStore\.enableMultiThread = True/process.DQMStore.enableMultiThread = False/g' hlt92X.py
+sed -i 's/numberOfThreads = cms.untracked\.uint32( 4 )/numberOfThreads = cms.untracked.uint32( 1 )/g' $OUTPUTCONFIG
+sed -i 's/process\.DQMStore\.enableMultiThread = True/process.DQMStore.enableMultiThread = False/g' $OUTPUTCONFIG
 
 # Add secondary file
 sed -i "/inputCommands/i \\
     secondaryFileNames = cms.untracked.vstring(\\
         '${SECONDARYSAMPLE}',\\
-   )," hlt92X.py
+   )," $OUTPUTCONFIG
