@@ -57,6 +57,17 @@ Note: <code>hltGetConfiguration</code> doesn't work on svmithi02, which is not a
   git clone https://github.com/boundino/HltPPRef2017.git
   cd HltPPRef2017/
 </pre>
+saveHLTtracks
+<h3> Include Ds trigger paths (Update on 2017.10.27) </h3>
+Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>.
+<pre>
+  git cms-addpkg HLTrigger/btau
+</pre>
+Copy the HLTDisplacedtktkVtxProducer with tracks saved to <code>HLTrigger/btau</code>, and compile
+<pre>
+  cp HltPPRef2017/saveHLTtracks/* HLTrigger/btau/
+  scram b
+</pre>
 <h3> Produce hlt config </h3>
 <ol>
   <li> Modify whether to run Dfinder, HLT menu, global tag, sample and event number in <code>rungetconfig.sh</code> <a href="https://github.com/boundino/HltPPRef2017/blob/master/rungetconfig.sh#L3-L11">L3-L11</a>. </li>
@@ -104,3 +115,21 @@ in <code>hlt92X.py</code> to
   sizeOfStackForThreadsInKB = cms.untracked.uint32( 10*1024 )
   )
 </pre>
+
+<h2> Include Ds trigger paths (Update on 2017.10.27) </h2>
+Ref: <a href="https://github.com/cms-sw/cmssw/pull/21017">https://github.com/cms-sw/cmssw/pull/21017</a>
+Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>.
+<pre>
+  git cms-addpkg HLTrigger/btau
+</pre>
+Copy the 3-prong filters to <code>HLTrigger/btau</code>, and compile
+<pre>
+  cp HltPPRef2017/Displacedtktktk/* HLTrigger/btau/
+  scram b
+</pre>
+Add Ds trigger paths in hlt92X.py.
+<pre>
+  cd HltPPRef2017/
+  ./addDsPath.sh
+</pre>
+
