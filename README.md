@@ -57,8 +57,7 @@ Note: <code>hltGetConfiguration</code> doesn't work on svmithi02, which is not a
   git clone https://github.com/boundino/HltPPRef2017.git
   cd HltPPRef2017/
 </pre>
-saveHLTtracks
-<h3> Include Ds trigger paths (Update on 2017.10.27) </h3>
+<h3> Save HLT tracks in the output file (Update on 2017.10.27) </h3>
 Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>.
 <pre>
   git cms-addpkg HLTrigger/btau
