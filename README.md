@@ -117,6 +117,7 @@ in <code>hlt92X.py</code> to
 
 <h2> Include Ds trigger paths (Update on 2017.10.27) </h2>
 Ref: <a href="https://github.com/cms-sw/cmssw/pull/21017">https://github.com/cms-sw/cmssw/pull/21017</a>
+
 Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>.
 <pre>
   git cms-addpkg HLTrigger/btau
