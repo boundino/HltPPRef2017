@@ -1,23 +1,17 @@
 
 <h1> HltPPRef2017 </h1>
 
-<h2> Set up CMSSW </h2>
+<h2> Set up CMSSW (update on 2017.11.6) </h2>
 <pre>
-  cmsrel CMSSW_9_2_12_patch1
-  cd CMSSW_9_2_12_patch1/src
+  cmsrel CMSSW_9_2_14
+  cd CMSSW_9_2_14/src
   cmsenv
 </pre>
 
-<h2> Set up L1 and HLT </h2>
-Ref: <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideGlobalHLT#Running_the_HLT_with_CMSSW_9_2_0">https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideGlobalHLT#Running_the_HLT_with_CMSSW_9_2_0</a>
+<h2> Set up L1 and HLT (update on 2017.11.6) </h2>
+Ref: <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideGlobalHLT#Running_the_HLT_with_CMSSW_9_2_X">https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideGlobalHLT#Running_the_HLT_with_CMSSW_9_2_X</a>
 <pre>
   git cms-init
-  git remote add cms-l1t-offline https://github.com/cms-l1t-offline/cmssw.git
-  git fetch cms-l1t-offline
-  git cms-merge-topic -u cms-l1t-offline:l1t-integration-v96.35-CMSSW_9_2_12
-  git cms-addpkg L1Trigger/L1TCommon
-  git cms-addpkg L1Trigger/L1TMuon
-  git clone https://github.com/cms-l1t-offline/L1Trigger-L1TMuon.git L1Trigger/L1TMuon/data
   git cms-addpkg L1Trigger/L1TGlobal
   git clone https://github.com/cms-l1-dpg/2017-pp-menu-dev -b 2017-07-24 ../2017-pp-menu-dev
   mkdir -p L1Trigger/L1TGlobal/data/Luminosity/startup
@@ -25,13 +19,13 @@ Ref: <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideGlobalHLT#Ru
   git cms-addpkg HLTrigger/Configuration
   git cms-checkdeps -A -a
   scram b -j 6
-  rehash
+  hash -r
 </pre>
 
-<h2> Add HighpT SingleJet L1 menu XML (update on 2017.10.18) </h2>
-Ref: <a href="https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiHighPtTrigger2017#L1_Menu">https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiHighPtTrigger2017#L1_Menu</a>
+<h2> Add HighpT SingleJet L1 menu XML (update on 2017.11.6) </h2>
+Ref: <a href="https://twiki.cern.ch/twiki/bin/view/CMS/HeavyIonsL1Menu2017#v4_release_details">https://twiki.cern.ch/twiki/bin/view/CMS/HeavyIonsL1Menu2017#v4_release_details</a>
 
-Download the L1 menu <code>L1Menu_Collisions2017_dev_r9_HIppRefMODv2_20171018.xml</code> from <a href="https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiHighPtTrigger2017">HiHighPtTrigger2017 twiki</a> attachments, and put it in <code>L1Trigger/L1TGlobal/data/Luminosity/startup/</code>.
+Download the L1 menu <code>L1Menu_pp502Collisions2017_v4.xml</code> from <a href="https://twiki.cern.ch/twiki/bin/view/CMS/HeavyIonsL1Menu2017#v4_release_details">HeavyIonsL1Menu2017 twiki</a> attachments, and put it in <code>L1Trigger/L1TGlobal/data/Luminosity/startup/</code>.
 
 <h2> Set up Dfinder </h2>
 Ref: <a href="https://github.com/taweiXcms/Bfinder/tree/Dfinder_9XX">https://github.com/taweiXcms/Bfinder/tree/Dfinder_9XX</a>
@@ -57,16 +51,16 @@ Note: <code>hltGetConfiguration</code> doesn't work on svmithi02, which is not a
   git clone https://github.com/boundino/HltPPRef2017.git
   cd HltPPRef2017/
 </pre>
-<h3> Save HLT tracks in the output file (Update on 2017.10.27) </h3>
-Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>.
-<pre>
-  git cms-addpkg HLTrigger/btau
-</pre>
-Copy the HLTDisplacedtktkVtxProducer with tracks saved to <code>HLTrigger/btau</code>, and compile
-<pre>
-  cp HltPPRef2017/saveHLTtracks/* HLTrigger/btau/
-  scram b
-</pre>
+<!-- <h3> Save HLT tracks in the output file (Update on 2017.10.27) </h3> -->
+<!-- Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>. -->
+<!-- <pre> -->
+<!--   git cms-addpkg HLTrigger/btau -->
+<!-- </pre> -->
+<!-- Copy the HLTDisplacedtktkVtxProducer with tracks saved to <code>HLTrigger/btau</code>, and compile -->
+<!-- <pre> -->
+<!--   cp HltPPRef2017/saveHLTtracks/* HLTrigger/btau/ -->
+<!--   scram b -->
+<!-- </pre> -->
 <h3> Produce hlt config </h3>
 <ol>
   <li> Modify whether to run Dfinder, HLT menu, global tag, sample and event number in <code>rungetconfig.sh</code> <a href="https://github.com/boundino/HltPPRef2017/blob/master/rungetconfig.sh#L3-L11">L3-L11</a>. </li>
@@ -115,21 +109,21 @@ in <code>hlt92X.py</code> to
   )
 </pre>
 
-<h2> Include Ds trigger paths (Update on 2017.10.27) </h2>
-Ref: <a href="https://github.com/cms-sw/cmssw/pull/21017">https://github.com/cms-sw/cmssw/pull/21017</a>
+<!-- <h2> Include Ds trigger paths (Update on 2017.10.27) </h2> -->
+<!-- Ref: <a href="https://github.com/cms-sw/cmssw/pull/21017">https://github.com/cms-sw/cmssw/pull/21017</a> -->
 
-Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>.
-<pre>
-  git cms-addpkg HLTrigger/btau
-</pre>
-Copy the 3-prong filters to <code>HLTrigger/btau</code>, and compile
-<pre>
-  cp HltPPRef2017/Displacedtktktk/* HLTrigger/btau/
-  scram b
-</pre>
-Add Ds trigger paths in hlt92X.py.
-<pre>
-  cd HltPPRef2017/
-  ./addDsPath.sh
-</pre>
+<!-- Get <code>HLTrigger/btau</code> if it has not been done. Make sure you are in <code>CMSSW_9_2_12_patch1/src/</code>. -->
+<!-- <pre> -->
+<!--   git cms-addpkg HLTrigger/btau -->
+<!-- </pre> -->
+<!-- Copy the 3-prong filters to <code>HLTrigger/btau</code>, and compile -->
+<!-- <pre> -->
+<!--   cp HltPPRef2017/Displacedtktktk/* HLTrigger/btau/ -->
+<!--   scram b -->
+<!-- </pre> -->
+<!-- Add Ds trigger paths in hlt92X.py. -->
+<!-- <pre> -->
+<!--   cd HltPPRef2017/ -->
+<!--   ./addDsPath.sh -->
+<!-- </pre> -->
 
