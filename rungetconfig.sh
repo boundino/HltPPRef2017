@@ -7,17 +7,17 @@
 # SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_Dspt0p0_Pthat50_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201622/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_118.root" # Ds RAW
 
 DOHLTBITS=1
-DODFINDER=0
+DODFINDER=1
 DOEVTANALYZER=0
 SAVEHLTTRACKS=0
 ##
 
 HLTCONFIG="/users/wangj/PPRef2017/DmesonHIHighPtRefPP5TeV2017_V3/V33"
-GLOBTAG="92X_upgrade2017_realistic_v11"
+GLOBTAG="92X_upgrade2017_realistic_v12"
 
-SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root" # prompt D RAW
-# SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_063810/0000/step3_pp_RAW2DIGI_L1Reco_RECO_106.root" # prompt D RECO
-# SECONDARYSAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root" # prompt D RAW
+# SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root" # prompt D RAW
+SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_063810/0000/step3_pp_RAW2DIGI_L1Reco_RECO_106.root" # prompt D RECO
+SECONDARYSAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_D0pt0p0_Pthat20_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201555/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_109.root" # prompt D RAW
 # SAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_Dspt0p0_Pthat50_TuneCUETP8M1_5020GeV/crab_RECO_20171005/171010_160206/0000/step3_pp_RAW2DIGI_L1Reco_RECO_104.root" # Ds RECO
 # SECONDARYSAMPLE="root://cms-xrd-global.cern.ch//store/user/twang/Pythia8_prompt_Dspt0p0_Pthat50_TuneCUETP8M1_5020GeV/crab_DIGI_20171005/171009_201622/0000/step2_pp_DIGI_L1_DIGI2RAW_HLT_118.root" # Ds RAW
 
